@@ -1,7 +1,14 @@
 #Open Aliases with sublime
-aliases='subl ~/.aliases'
 alias sudo='sudo '
 alias slt='subl'
+
+
+
+alias df="df -h"
+alias du="du -h"
+CORES=`nproc`
+JOBS=$(expr $CORES + 1)
+alias make="make -j$JOBS"
 
 # Archives
 function extract {
@@ -38,13 +45,6 @@ function extract_and_remove {
   rm -f $1
 }
 alias extrr='extract_and_remove '
-
-
-alias df="df -h"
-alias du="du -h"
-CORES=`nproc`
-JOBS=$(expr $CORES + 1)
-alias make="make -j$JOBS"
 
 
 # Easier navigation: .., ..., ...., ....., ~ and -
