@@ -95,3 +95,4 @@ source $ZSH/oh-my-zsh.sh
 ZSH_THEME="robbyrussel"
 
 source ~/.aliases
+source ~/.bindkeys.zsh
