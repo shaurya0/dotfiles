@@ -6,6 +6,9 @@ alias slt='subl'
 
 alias df="df -h"
 alias du="du -h"
+alias rf="rm -rf"
+alias cat="bat"
+
 CORES=`nproc`
 JOBS=$(expr $CORES + 1)
 alias make="make -j$JOBS"
