@@ -40,17 +40,17 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "com.sublimetext.3"
+                                            "com.tigervnc.tigervnc"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "left_control"
+                                    "key_code": "left_command"
                                 },
                                 "to": [
                                     {
-                                        "key_code": "left_command"
+                                        "key_code": "right_command"
                                     }
                                 ],
                                 "type": "basic"
