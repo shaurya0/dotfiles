@@ -117,11 +117,3 @@ if ! shopt -oq posix; then
 fi
 cd ~
 
-source ~/.aliases
-# added by Anaconda3 installer
-export PATH="/home/shaurya/anaconda3/bin:$PATH"
-
-# Launch Zsh
-if [ -t 1 ]; then
-exec zsh
-fi
