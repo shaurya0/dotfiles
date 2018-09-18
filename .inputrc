@@ -8,3 +8,4 @@
 "\C-h": delete-char
 "\M-K": backward-kill-word
 "\C-H":  kill-word
+"\C-k-k": kill-line
