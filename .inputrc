@@ -1,0 +1,10 @@
+"\M-u": backward-char
+"\M-o": forward-char
+"\M-n": beginning-of-line
+"\M-m": end-of-line
+"\M-j": backward-word
+"\M-l": forward-word
+"\M-k": backward-delete-char
+"\C-h": delete-char
+"\M-K": backward-kill-word
+"\C-H":  kill-word
