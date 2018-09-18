@@ -40,3 +40,4 @@ for f in $DOTFILES; do
 done
 
 
+cp warpdrive/src/.warpdrive ~/.warpdrive	
