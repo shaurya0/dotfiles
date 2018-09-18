@@ -1,0 +1,211 @@
+#
+# Tag And Warp utility functions.
+#
+# Author:  Joeri Hermans
+#
+
+## BEGIN Definitions. ##########################################################
+
+# Define terminal colors.
+set_red='tput setaf 1'
+set_green='tput setaf 2'
+set_yellow='tput setaf 3'
+set_blue='tput setaf 4'
+set_bold='tput bold'
+reset_colors='tput sgr0'
+
+# Define tags location.
+export WARP_LOCATIONS=$HOME/.tags
+
+## END Definitions. ############################################################
+
+## BEGIN Additional zsh functionality. #########################################
+
+# Check if the current shell is zsh
+if [ $SHELL = "/usr/bin/zsh" ]; then
+
+    function _zsh_auto_complete {
+        reply=($(ls $WARP_LOCATIONS))
+    }
+
+    # Bind the autocomplete to the following commands.
+    compctl -K _zsh_auto_complete warp
+    compctl -K _zsh_auto_complete untag
+    compctl -K _zsh_auto_complete retag
+
+fi
+
+## END Additional zsh functionality. ###########################################
+
+## BEGIN Additional bash functionality. ########################################
+
+if [ $SHELL = "/bin/bash" ]; then
+
+    function _bash_auto_complete {
+        local curw=${COMP_WORDS[COMP_CWORD]}
+        local wordlist=$(find $WARP_LOCATIONS -type l -printf "%f\n")
+        COMPREPLY=($(compgen -W '${wordlist[@]}' -- "$curw"))
+
+        return 0
+    }
+
+    # Bind the autocomplete to the following commands.
+    complete -F _bash_auto_complete warp untag retag
+
+fi
+
+## END Additional bash functionality. ##########################################
+
+function print_error {
+    eval $set_red
+    eval $set_bold
+    echo -ne "[ERROR]"
+    eval $reset_colors
+    echo ": $1"
+}
+
+function print_warning {
+    eval $set_yellow
+    eval $set_bold
+    echo -ne "[WARNING]"
+    eval $reset_colors
+    echo ": $1"
+}
+
+function print_info {
+    eval $set_bold
+    echo -ne "[INFO]"
+    eval $reset_colors
+    echo ": $1"
+}
+
+function warp {
+    # Check if the correct number of arguments has been supplied.
+    if [ $# -eq 0 ]; then
+        print_error "No warp argument has been supplied."
+        eval $reset_colors
+        return
+    fi
+    location=$WARP_LOCATIONS/$1
+    # Check if the specified tag exists.
+    if [ ! -L $location ]; then
+        print_error "Unknown tag."
+    else
+        destination=$(readlink $WARP_LOCATIONS/$1)
+        print_info "Warping to $destination."
+        cd -P "$WARP_LOCATIONS/$1"
+    fi
+    eval $reset_colors
+}
+
+function tag {
+    # Create the tags storage if it doesn't exist yet.
+    mkdir -p $WARP_LOCATIONS
+    # Check if an argument is specified.
+    if [ $# -eq 0 ]; then
+        # Let ln write folder name to warp locations.
+        tag=${PWD##*/}
+        print_warning "No tagname specified, taking $(eval $set_bold)$tag"
+    else
+        tag=$1
+    fi
+    location="$WARP_LOCATIONS/$tag"
+    # Check if a symlink with this tag already exists.
+    if [ -L $location ]; then
+        print_error "Tag $(eval $set_bold)$tag$(eval $reset_colors) already exists."
+        return
+    fi
+    # Save the tag.
+    ln -s "$(pwd)" "$WARP_LOCATIONS/$tag"
+    print_info "Tagged $tag as $(pwd)"
+    eval $reset_colors
+}
+
+function untag {
+    # Check if a tagname has been specified.
+    if [ $# -eq 0 ]; then
+        tag=${PWD##*/}
+        print_warning "Setting removal tagname to $(eval $set_bold)$tag"
+    else
+        tag=$1
+    fi
+    location="$WARP_LOCATIONS/$tag"
+    if [ ! -L $location ]; then
+        # Check if tag exists with the current absolute path.
+        current_directory=$(pwd)
+        for f in $WARP_LOCATIONS/*
+        do
+            file=$(readlink $f)
+            if [ $file = $current_directory ]; then
+                rm -if $f
+                print_info "Removed tag."
+                eval $reset_colors
+                return
+            fi
+        done
+        print_error "Tag does not exist."
+        return
+    fi
+    print_info "Removed tag."
+    rm -if $location
+    eval $reset_colors
+}
+
+function retag {
+    # If no arguments specified, don't do anything.
+    if [ $# -eq 0 ]; then
+        print_error "No name specified for retag."
+        eval $reset_colors
+        return
+    fi
+    # If only one argument specified, assume that this is the retag name, and 
+    # take the current directory as the tagname to rename.
+    if [ $# -eq 1 ]; then
+        tag=${PWD##*/}
+        new_tag=$1
+        print_warning "No tagname specified, taking $(eval $set_bold)$tag"
+    else
+        tag=$1
+        new_tag=$2
+    fi
+    location="$WARP_LOCATIONS/$tag"
+    new_location="$WARP_LOCATIONS/$new_tag"
+    # Before we retag anything, let's check that new_tag doesn't already exist.
+    if [ -L $new_location ]; then
+        print_error "New tagname must not already be a tagname."
+        eval $reset_colors
+        return
+    fi
+    if [ ! -L $location ]; then
+        # If a second argument was provided and the first argument doesn't 
+        # match an existing tagname, throw an error.
+        if [ $# -ge 2 ]; then
+            print_error "Tag does not exist: $(eval $set_bold)$tag"
+            eval $reset_colors
+            return
+        fi
+        # Check if tag exists with the current absolute path.
+        current_directory=$(pwd)
+        for f in $WARP_LOCATIONS/*
+        do
+            file=$(readlink $f)
+            if [ $file = $current_directory ]; then
+                mv $f "$WARP_LOCATIONS/$new_tag"
+                print_info "Renamed tag."
+                eval $reset_colors
+                return
+            fi
+        done
+        print_error "Tag does not exist."
+        return
+    fi
+    print_info "Renamed tag."
+    mv $location $new_location
+    eval $reset_colors
+}
+
+function tags {
+    echo "$(eval $set_bold)Listing available tags and destinations:$(eval $reset_colors)"
+    ls -l $WARP_LOCATIONS | sed 's/  / /g' | cut -d' ' -f9- && echo
+    eval $reset_colors
+}
