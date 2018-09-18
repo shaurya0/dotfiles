@@ -37,7 +37,7 @@ rm -rf temp
 DOTFILES="$(find . -name ".*" -type f)"
 for f in $DOTFILES; do
     if [[ -f ~/$(basename $f) ]]; then
-        cp ~/$(basename $f) "~/$(basename $f).bak"
+        cp ~/$(basename $f) ~/$(basename $f).bak
     fi
     cp $f ~/
 done
