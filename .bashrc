@@ -156,3 +156,4 @@ function bd(){
 }
 
 alias dirs='dirs -v'
+source ~/.warpdrive
