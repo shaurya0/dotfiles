@@ -157,3 +157,8 @@ function bd(){
 
 alias dirs='dirs -v'
 source ~/.warpdrive
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+PS1=${PS1%?}
+PS1=${PS1%?}\n'$ '
