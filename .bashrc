@@ -127,10 +127,10 @@ alias lln="ls -lhtr  --time-style long-iso | tac | cat -n | tac | sed -s 's/^\s*
 function lf() {
     if [ "x${1}" == "x" ]
     then
-        n=1 
+        n=1
     else
         n="${1}"
-    fi  
+    fi
     ls -rt1 | tail -n ${n} | head -n 1
 }
 
