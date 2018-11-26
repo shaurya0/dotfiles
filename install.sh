@@ -41,6 +41,7 @@ sudo apt-get install autojump
 rm -rf temp
 
 cp .bashrc ~/.bashrc
+cp .aliases ~/.aliases
 cp .bindkeys.zsh ~/.bindkeys.zsh
 cp .gdbinit ~/.gdbinit
 cp .inputrc ~/.inputrc
