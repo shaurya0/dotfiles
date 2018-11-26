@@ -121,12 +121,39 @@ alias dirs='dirs -v'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export PATH=/Users/shauryas/anaconda3/bin:$PATH
+platform='unknown'
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+   platform='linux'
+elif [[ "$unamestr" == 'Darwin' ]]; then
+   platform='osx'
+fi
 
+if [[ $platform == 'linux' ]]; then
+[[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
+autoload -U compinit && compinit -u
+elif [[ $platform == 'osx' ]]; then
+
+export PATH=/Users/shauryas/anaconda3/bin:$PATH
 export PATH="/usr/local/opt/binutils/bin:$PATH"
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+
+fi
+
+
 
 
 export EDITOR=subl
 export NNN_USE_EDITOR=1
-export NNN_SCRIPT=/usr/local/bin/nscript
+export NNN_SCRIPT=$HOME/temp/nnn/nscript
+export NNN_TMPFILE=$HOME/temp/nnn/nnn
+
+n()
+{
+        nnn "$@"
+
+        if [ -f $NNN_TMPFILE ]; then
+                . $NNN_TMPFILE
+                rm $NNN_TMPFILE
+        fi
+}
