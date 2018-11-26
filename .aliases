@@ -137,5 +137,6 @@ alias add='git add'
 alias add='git add'
 alias rgi='rg --no-ignore '
 alias fdi='fd -I '
+alias n='nnn '
 
 alias xming="sudo service ssh --full-restart;export DISPLAY=:0"

@@ -1,5 +1,5 @@
 mkdir -p temp
-if ! [ -x "$(command -v zsh)" ]; then
+if ! [ -e ~/.zshrc ]; then
     sudo apt-get install zsh
     sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 
@@ -34,13 +34,12 @@ fi
 
 rm -rf temp
 
-DOTFILES="$(find . -name ".*" -type f)"
-for f in $DOTFILES; do
-    if [[ -f ~/$(basename $f) ]]; then
-        cp ~/$(basename $f) ~/$(basename $f).bak
-    fi
-    cp $f ~/
-done
+cp .bashrc ~/.bashrc
+cp .bindkeys.zsh ~/.bindkeys.zsh
+cp .gdbinit ~/.gdbinit
+cp .inputrc ~/.inputrc
+cp .profile ~/.profile
+cp .tmux.conf ~/.tmux.conf
+cp .zshrc ~/.zshrc
 
-
-cp warpdrive/src/.warpdrive ~/.warpdrive
+sudo apt-get install autojump

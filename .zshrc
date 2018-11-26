@@ -92,22 +92,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-ZSH_THEME="robbyrussel"
 
-source ~/.aliases
 source ~/.bindkeys.zsh
-
-
-alias lln="ls -lhtr  --time-style long-iso | tac | cat -n | tac | sed -s 's/^\s*\([0-9]*\)\s*\(.*\)/[\1]  \2 [\1]/'g && pwd"
-function lf() {
-    if [ "x${1}" == "x" ]
-    then
-        n=1
-    else
-        n="${1}"
-    fi
-    ls -rt1 | tail -n ${n} | head -n 1
-}
+source ~/.aliases
 
 function cd() {
   if [ "$#" = "0" ]
@@ -131,4 +118,15 @@ function bd(){
 }
 
 alias dirs='dirs -v'
-source ~/.warpdrive
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export PATH=/Users/shauryas/anaconda3/bin:$PATH
+
+export PATH="/usr/local/opt/binutils/bin:$PATH"
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+
+
+export EDITOR=subl
+export NNN_USE_EDITOR=1
+export NNN_SCRIPT=/usr/local/bin/nscript
