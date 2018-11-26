@@ -162,3 +162,5 @@ source ~/.warpdrive
 
 PS1=${PS1%?}
 PS1=${PS1%?}\n'$ '
+
+source ~/.aliases
