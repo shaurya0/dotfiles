@@ -29,8 +29,14 @@ if ! [ -x "$(command -v rg)" ]; then
     wget https://github.com/BurntSushi/ripgrep/releases/download/0.9.0/ripgrep_0.9.0_amd64.deb -O temp/ripgrep.deb
     sudo dpkg -i temp/ripgrep.deb
 else
-        echo "ripgrep already installed"
+    echo "ripgrep already installed"
 fi
+
+sudo apt-get install nnn
+sudo apt-get install fzy
+sudo apt-get install autojump
+
+
 
 rm -rf temp
 
@@ -42,4 +48,3 @@ cp .profile ~/.profile
 cp .tmux.conf ~/.tmux.conf
 cp .zshrc ~/.zshrc
 
-sudo apt-get install autojump
