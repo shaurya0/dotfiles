@@ -138,6 +138,6 @@ alias add='git add'
 alias rgi='rg --no-ignore '
 alias fdi='fd -I '
 alias n='nnn '
-alias catp='bat -p'
+alias catp='bat -p '
 
 alias xming="sudo service ssh --full-restart;export DISPLAY=:0"
