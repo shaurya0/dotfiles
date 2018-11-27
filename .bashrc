@@ -156,7 +156,6 @@ function bd(){
 }
 
 alias dirs='dirs -v'
-source ~/.warpdrive
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
@@ -174,8 +173,7 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
 fi
 
 if [[ $platform == 'linux' ]]; then
-[[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
-autoload -U compinit && compinit -u
+. /usr/share/autojump/autojump.sh
 elif [[ $platform == 'osx' ]]; then
 
 export PATH=/Users/shauryas/anaconda3/bin:$PATH
