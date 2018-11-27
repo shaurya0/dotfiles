@@ -174,6 +174,7 @@ fi
 
 if [[ $platform == 'linux' ]]; then
 . /usr/share/autojump/autojump.sh
+export PATH=/home/shauryas/anaconda3/bin/:$PATH
 elif [[ $platform == 'osx' ]]; then
 
 export PATH=/Users/shauryas/anaconda3/bin:$PATH
