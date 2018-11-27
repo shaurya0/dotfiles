@@ -49,3 +49,4 @@ cp .profile ~/.profile
 cp .tmux.conf ~/.tmux.conf
 cp .zshrc ~/.zshrc
 
+mkdir -p ~/temp/nnn
