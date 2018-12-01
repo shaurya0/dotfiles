@@ -296,6 +296,33 @@
                                 ],
                                 "type": "basic"
                             },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "org.mozilla.firefox"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "a",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "control"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "a",
+                                        "modifiers": {
+                                            "mandatory": "command"
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            },
 
 
                             {
