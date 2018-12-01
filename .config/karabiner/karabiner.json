@@ -166,6 +166,8 @@
                                 ],
                                 "type": "basic"
                             },
+
+
                             {
                                 "from": {
                                     "key_code": "k",
@@ -188,6 +190,45 @@
                             },
                             {
                                 "from": {
+                                    "key_code": "c",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "control"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "c",
+                                        "modifiers": {
+                                            "mandatory": "command"
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "v",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "control"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "v",
+                                        "modifiers": {
+                                            "mandatory": "command"
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+
+                            {
+                                "from": {
                                     "key_code": "k",
                                     "modifiers": {
                                         "mandatory": [
@@ -202,6 +243,43 @@
                                 ],
                                 "type": "basic"
                             },
+                            {
+                                "from": {
+                                    "key_code": "k",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_option",
+                                            "left_shift"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "delete_or_backspace",
+                                        "modifiers": {
+                                            "mandatory": "option"
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "k",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "delete_or_backspace"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+
                             {
                                 "from": {
                                     "key_code": "s",
