@@ -138,7 +138,6 @@ alias add='git add'
 alias rgi='rg --no-ignore '
 alias fdi='fd -I '
 alias catp='bat -p '
-alias catp='bat -p '
 alias rbc='rf build && mkdir build && cd build'
 alias rlf='readlink -f '
 
