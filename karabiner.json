@@ -11,7 +11,8 @@
                     "basic.simultaneous_threshold_milliseconds": 50,
                     "basic.to_delayed_action_delay_milliseconds": 500,
                     "basic.to_if_alone_timeout_milliseconds": 1000,
-                    "basic.to_if_held_down_threshold_milliseconds": 500
+                    "basic.to_if_held_down_threshold_milliseconds": 500,
+                    "mouse_motion_to_scroll.speed": 100
                 },
                 "rules": [
                     {
@@ -148,7 +149,6 @@
                                 ],
                                 "type": "basic"
                             },
-
                             {
                                 "from": {
                                     "key_code": "o",
@@ -166,8 +166,6 @@
                                 ],
                                 "type": "basic"
                             },
-
-
                             {
                                 "from": {
                                     "key_code": "k",
@@ -215,62 +213,6 @@
                                 ],
                                 "type": "basic"
                             },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "com.googlecode.iterm2"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "x",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "control"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "x",
-                                        "modifiers": {
-                                            "mandatory": "command"
-                                        }
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "com.googlecode.iterm2"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "z",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "control"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "z",
-                                        "modifiers": {
-                                            "mandatory": "command"
-                                        }
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-
-
                             {
                                 "conditions": [
                                     {
@@ -379,7 +321,6 @@
                                 ],
                                 "type": "basic"
                             },
-
                             {
                                 "conditions": [
                                     {
@@ -407,7 +348,6 @@
                                 ],
                                 "type": "basic"
                             },
-
                             {
                                 "conditions": [
                                     {
@@ -435,8 +375,6 @@
                                 ],
                                 "type": "basic"
                             },
-
-
                             {
                                 "from": {
                                     "key_code": "k",
@@ -489,7 +427,6 @@
                                 ],
                                 "type": "basic"
                             },
-
                             {
                                 "from": {
                                     "key_code": "s",
@@ -562,7 +499,6 @@
                                 ],
                                 "type": "basic"
                             },
-
                             {
                                 "from": {
                                     "key_code": "h",
@@ -644,10 +580,10 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "j",
+                                    "key_code": "b",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_option"
+                                            "left_alt"
                                         ]
                                     }
                                 },
@@ -753,7 +689,7 @@
                                     {
                                         "key_code": "left_arrow",
                                         "modifiers": {
-                                            "mandatory": "shift"
+                                            "mandatory": ["shift"]
                                         }
                                     }
                                 ],
@@ -776,7 +712,6 @@
                                 "type": "basic"
                             },
                             {
-
                                 "from": {
                                     "key_code": "comma",
                                     "modifiers": {
@@ -806,7 +741,7 @@
                                     {
                                         "key_code": "right_arrow",
                                         "modifiers": {
-                                            "mandatory": "shift"
+                                            "mandatory": ["shift"]
                                         }
                                     }
                                 ],
@@ -874,7 +809,7 @@
                                     {
                                         "key_code": "home",
                                         "modifiers": {
-                                            "mandatory": "shift"
+                                            "mandatory": ["shift"]
                                         }
                                     }
                                 ],
@@ -910,7 +845,7 @@
                                     {
                                         "key_code": "end",
                                         "modifiers": {
-                                            "mandatory": "shift"
+                                            "mandatory": ["shift"]
                                         }
                                     }
                                 ],
