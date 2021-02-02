@@ -583,20 +583,42 @@
                                     "key_code": "b",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_alt"
+                                            "left_option"
                                         ]
                                     }
                                 },
                                 "to": [
                                     {
-                                        "key_code": "left_arrow",
-                                        "modifiers": {
-                                            "mandatory": "option"
-                                        }
+                                        "key_code": "left_arrow"
                                     }
                                 ],
                                 "type": "basic"
                             },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "com.sublimetext.3"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "right_arrow"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+
                             {
                                 "conditions": [
                                     {
@@ -630,6 +652,56 @@
                                 ],
                                 "type": "basic"
                             },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "com.googlecode.iterm2"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    },
+                                    {
+                                        "bundle_identifiers": [
+                                            "com.sublimetext.3"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "j",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_arrow",
+                                        "modifiers": {
+                                            "mandatory": "option"
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "b",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_arrow"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+
                             {
                                 "conditions": [
                                     {
@@ -689,7 +761,7 @@
                                     {
                                         "key_code": "left_arrow",
                                         "modifiers": {
-                                            "mandatory": ["shift"]
+                                            "mandatory": "shift"
                                         }
                                     }
                                 ],
@@ -741,7 +813,7 @@
                                     {
                                         "key_code": "right_arrow",
                                         "modifiers": {
-                                            "mandatory": ["shift"]
+                                            "mandatory": "shift"
                                         }
                                     }
                                 ],
@@ -809,7 +881,7 @@
                                     {
                                         "key_code": "home",
                                         "modifiers": {
-                                            "mandatory": ["shift"]
+                                            "mandatory": "shift"
                                         }
                                     }
                                 ],
@@ -845,7 +917,7 @@
                                     {
                                         "key_code": "end",
                                         "modifiers": {
-                                            "mandatory": ["shift"]
+                                            "mandatory": "shift"
                                         }
                                     }
                                 ],
